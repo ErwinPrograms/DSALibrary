@@ -33,19 +33,26 @@ public class SinglyLinkedList<T> implements List<T> {
     }
 
     private Node<T> head;
+    private int length;
 
     public SinglyLinkedList() {
         this.head = null;
-    }
-
-    public SinglyLinkedList(T initialNodeData) {
-        this.head = new Node<>(initialNodeData);
+        this.length = 0;
     }
 
     @Override
     public T get(int index) {
-        //placeholder
-        return head.getData();
+        if (index >= length) {
+            return null;
+        }
+
+        Node<T> iteratorNode = this.head;
+
+        for(int i = 1; i < index; i++) {
+            iteratorNode = iteratorNode.getNextNode();
+        }
+
+        return iteratorNode.getData();
     }
 
     @Override
