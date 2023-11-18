@@ -126,7 +126,21 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        return false;
+        if(this.head == null) {
+            this.head = new Node<>(t);
+            this.length++;
+            return true;
+        }
+
+        Node<T> iteratorNode = this.head;
+
+        while(iteratorNode.getNextNode() != null) {
+            iteratorNode = iteratorNode.getNextNode();
+        }
+
+        iteratorNode.setNextNode(new Node<>(t));
+        this.length++;
+        return true;
     }
 
     @Override
@@ -161,6 +175,7 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
-
+        this.head = null;
+        this.length = 0;
     }
 }
