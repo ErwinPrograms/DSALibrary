@@ -19,4 +19,34 @@ public class StackTest {
         assert testStack.push("first").equals("first");
         assert testStack.push("second").equals("second");
     }
+
+    @Test
+    public void pop() {
+        assert testStack.pop() == null;
+
+        testStack.push("first");
+        testStack.push("second");
+        testStack.push("third");
+
+        assert testStack.pop().equals("third");
+        assert testStack.pop().equals("second");
+        assert testStack.pop().equals("first");
+        assert testStack.pop() == null;
+    }
+
+    @Test
+    public void peek(){
+        assert testStack.peek() == null;
+
+        testStack.push("peek me");
+
+        assert testStack.peek().equals("peek me");
+    }
+
+    @Test
+    public void empty() {
+        assert testStack.empty();
+        testStack.push("element");
+        assert !testStack.empty();
+    }
 }
