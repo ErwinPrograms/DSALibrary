@@ -62,4 +62,16 @@ public class Stack<T> {
 
         return poppedData;
     }
+
+    public T peek() {
+        if (this.top == null) {
+            return null;
+        }
+
+        return this.top.getData();
+    }
+
+    public boolean empty() {
+        return this.top == null;
+    }
 }
