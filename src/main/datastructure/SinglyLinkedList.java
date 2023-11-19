@@ -42,8 +42,8 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        if (index >= length) {
-            return null;
+        if (index >= length || index < 0) {
+            throw new IndexOutOfBoundsException();
         }
 
         Node<T> iteratorNode = this.head;
