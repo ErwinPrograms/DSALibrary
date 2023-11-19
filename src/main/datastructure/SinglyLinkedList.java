@@ -57,7 +57,19 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public T set(int i, T t) {
-        return null;
+        if (i >= length || i < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node<T> iteratorNode = this.head;
+
+        for(int iterate = 1; iterate < i; iterate++) {
+            iteratorNode = iteratorNode.getNextNode();
+        }
+
+        T previousData = iteratorNode.getData();
+        iteratorNode.setData(t);
+        return previousData;
     }
 
     @Override
