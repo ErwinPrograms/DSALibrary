@@ -48,7 +48,7 @@ public class SinglyLinkedList<T> implements List<T> {
 
         Node<T> iteratorNode = this.head;
 
-        for(int i = 1; i < index; i++) {
+        for(int i = 0; i < index; i++) {
             iteratorNode = iteratorNode.getNextNode();
         }
 
@@ -74,7 +74,21 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public void add(int i, T t) {
+        if (i >= length || i < 0) {
+            throw new IndexOutOfBoundsException();
+        }
 
+        Node<T> iteratorNode = this.head;
+
+        for(int iterate = 1; iterate < i - 1; iterate++) {
+            iteratorNode = iteratorNode.getNextNode();
+        }
+
+        Node<T> shiftedNode = iteratorNode.getNextNode();
+        Node<T> nodeToInsert = new Node<>(t);
+        nodeToInsert.setNextNode(shiftedNode);
+        iteratorNode.setNextNode(nodeToInsert);
+        this.length++;
     }
 
     @Override
@@ -109,7 +123,7 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public int size() {
-        return 0;
+        return length;
     }
 
     public boolean isEmpty() {
