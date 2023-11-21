@@ -26,5 +26,9 @@ public class SinglyLinkedListTest {
         assert this.testList.get(0).equals("first");
         assert this.testList.add("second");
         assert this.testList.get(1).equals("second");
+        testList.add(1, "new second");
+        assert this.testList.get(1).equals("new second");
+        assert this.testList.get(2).equals("second");
+        assert testList.size() == 3;
     }
 }
