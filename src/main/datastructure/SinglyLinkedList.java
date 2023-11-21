@@ -116,7 +116,15 @@ public class SinglyLinkedList<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        Object[] listAsArray = new Object[this.length];
+        Node<T> iteratorNode = this.head;
+
+        for(int i = 0; i < this.length; i++) {
+            listAsArray[i] = iteratorNode.getData();
+            iteratorNode = iteratorNode.getNextNode();
+        }
+
+        return listAsArray;
     }
 
     @Override
